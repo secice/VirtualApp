@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '29.0.2'
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 26
@@ -34,5 +34,5 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':YAHFA')
+    implementation 'io.github.pagalaxylab:yahfa:0.10.0'
 }
