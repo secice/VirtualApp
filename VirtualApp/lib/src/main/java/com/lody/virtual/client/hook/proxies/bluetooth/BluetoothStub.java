@@ -2,14 +2,14 @@ package com.lody.virtual.client.hook.proxies.bluetooth;
 
 import android.os.Build;
 
-import com.lody.virtual.client.core.VirtualCore;
 import com.lody.virtual.client.hook.base.BinderInvocationProxy;
 import com.lody.virtual.client.hook.base.StaticMethodProxy;
-import com.lody.virtual.helper.utils.Mark;
+import com.lody.virtual.helper.utils.marks.FakeDeviceMark;
 
 import java.lang.reflect.Method;
 
 import mirror.android.bluetooth.IBluetooth;
+import mirror.android.bluetooth.IBluetoothManager;
 
 /**
  * @see android.bluetooth.BluetoothManager
@@ -20,7 +20,8 @@ public class BluetoothStub extends BinderInvocationProxy {
             "bluetooth";
 
     public BluetoothStub() {
-        super(IBluetooth.Stub.asInterface, SERVICE_NAME);
+        super(Build.VERSION.SDK_INT >= 17 ? IBluetoothManager.Stub.asInterface : IBluetooth.Stub.asInterface,
+                SERVICE_NAME);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class BluetoothStub extends BinderInvocationProxy {
         addMethodProxy(new GetAddress());
     }
 
-    @Mark("fake MAC")
+    @FakeDeviceMark("fake MAC")
     private static class GetAddress extends StaticMethodProxy {
 
         GetAddress() {
