@@ -54,7 +54,7 @@ public class VApp extends MultiDexApplication {
                         .withListener(() -> {
                             // nothing
                         })
-                        .build(VApp.this, "48RJJP7ZCZZBB6KMMWW5");
+                        .build(VApp.this, "9G99QCKNDHP37WVKVW6S");
             }
 
             @Override
